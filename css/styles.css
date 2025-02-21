@@ -15,9 +15,6 @@ body {
 .gallery-link {
 	cursor: pointer;
 }
-.gallery-link:hover {
-	cursor: url("../image/bxs_hand-down.png"), auto;
-}
 
 .gallery-item {
 	width: 360px;
@@ -37,11 +34,7 @@ body {
 }
 
 .modal {
-	width: 100%;
 	background-color: rgba(46, 47, 66, 0.8);
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .modal img {
