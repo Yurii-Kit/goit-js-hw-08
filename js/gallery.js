@@ -100,7 +100,7 @@ function handlerClick(event) {
 	// Створюємо екземпляр класу basicLightbox;
 	const instance = basicLightbox.create(`
 			<div class="modal">
-					<img src="${modalImg.original}" alt="${modalImg.description}" width = "800" height="600" /> </div>`);
+					<img src="${modalImg.original}" alt="${modalImg.description}" /> </div>`);
 	//  Відкриваємо модалку;
 	instance.show();
 }
