@@ -50,18 +50,6 @@ const images = [
 const container = document.querySelector(".js-gallery");
 
 // 2 Оголошуємо функцію для створення розмітки з масиву обєктів, перебираюси масив;
-// const gallery = document.querySelector(".gallery");
-// const markup = images
-// 	.map(
-// 		({ preview, original, description }) =>
-// 			`<li class="gallery-item">
-//     <a class="gallery-link" href="${original}">
-//       <img class="gallery-image" src="${preview}" data-source="${original}" alt="${description}" />
-//     </a>
-//   </li>`,
-// 	)
-// 	.join("");
-
 function createPictures(pictures) {
 	return pictures
 		.map(picture => {
@@ -74,7 +62,6 @@ function createPictures(pictures) {
 }
 // 3 Вставляємо картинки в галерею HTML;
 container.insertAdjacentHTML("beforeend", createPictures(images));
-// gallery.innerHTML = markup;
 
 // 4 Додаэмо слухача події на контейнер;
 container.addEventListener("click", handlerClick);
@@ -82,25 +69,19 @@ container.addEventListener("click", handlerClick);
 //  Забороняэмо скачування картинки при натиснені на неї (вона як посилання);
 function handlerClick(event) {
 	event.preventDefault();
-	// Виводимо nodeName в консоль
-	console.log(event.target.nodeName);
+
 	//  перевіряєми чи клікнули на картинку;
 	if (event.target.nodeName !== "IMG") {
 		return;
 	}
 	// перевіряємо по якій картинці клікнули і виводимо в консоль;
 	const clickedImage = event.target.dataset.source;
-	console.log(clickedImage);
-	//  Шукаємо картинку в масиві по якій клікнули;
-	const modalImg = images.find(image => {
-		return image.original === clickedImage;
-	});
-	console.log(modalImg);
+	const imageDescription = event.target.alt;
 
 	// Створюємо екземпляр класу basicLightbox;
 	const instance = basicLightbox.create(`
 			<div class="modal">
-					<img src="${modalImg.original}" alt="${modalImg.description}" /> </div>`);
+					<img src="${clickedImage}" alt="${imageDescription}" /> </div>`);
 	//  Відкриваємо модалку;
 	instance.show();
 }
